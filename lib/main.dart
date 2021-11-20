@@ -273,7 +273,8 @@ class _MyHomePageState extends State<MyHomePage> {
           context: context,
           builder: (ctx) => AlertDialog(
             title: Text("Congratulations"),
-            content: Text("You discovered all the tiles without stepping on any mines. Well done."),
+            content: Text(
+                "You discovered all the tiles without stepping on any mines. Well done."),
             actions: [
               MaterialButton(
                 color: Colors.deepPurple,
@@ -311,7 +312,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void unrevealRecursively(CellModel cell) {
-    if (cell.x > size || cell.y > size || cell.x < 0 || cell.y < 0 || cell.isRevealed) {
+    if (cell.x > size ||
+        cell.y > size ||
+        cell.x < 0 ||
+        cell.y < 0 ||
+        cell.isRevealed) {
       return;
     }
 
@@ -327,7 +332,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
       for (int i = xStart; i <= xEnd; ++i) {
         for (int j = yStart; j <= yEnd; ++j) {
-          if (!cells[i][j].isMine && !cells[i][j].isRevealed && cells[i][j].value == 0) {
+          if (!cells[i][j].isMine &&
+              !cells[i][j].isRevealed &&
+              cells[i][j].value == 0) {
             unrevealRecursively(cells[i][j]);
           }
         }
