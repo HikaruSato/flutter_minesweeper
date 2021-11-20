@@ -12,11 +12,14 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
+  flutter_localizations: # 多言語ライブラリの本体
+    sdk: flutter
+  intl: ^0.17.0 # 多言語やフォーマッタなどの関連ライブラリ
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 flutter:
-
+  generate: true
   uses-material-design: true
