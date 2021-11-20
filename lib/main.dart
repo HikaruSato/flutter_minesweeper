@@ -39,6 +39,7 @@ DEALINGS IN THE SOFTWARE.
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_minesweeper/cell.dart';
 import 'package:flutter_minesweeper/cell_widget.dart';
@@ -52,14 +53,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Minesweeper',
+      onGenerateTitle: (BuildContext context) =>
+          AppLocalizations.of(context).appTitle,
       localizationsDelegates: [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: [
-        const Locale('jp', ''),
+        const Locale('ja', ''),
         const Locale('en', ''),
       ],
       debugShowCheckedModeBanner: false,
@@ -77,13 +80,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final rules = [
-    "Rules",
-    "\n\nA player taps on a cell to uncover it. If a player uncovers a mined cell, the game ends, as there is only 1 life per game.",
-    "\n\nOtherwise, the uncovered cells displays either a number, indicating the quantity of mines diagonally and/or adjacent to it, or a blank tile (or \"0\"), and all adjacent non-mined cells will automatically be uncovered.",
-    "\n\nTap-and-hold on a cell will flag it, causing a flag to appear on it. Flagged cells are still considered covered.",
-    "\n\nTo win the game, players must uncover all non-mine cells, at which point,",
-  ];
+  List<String> get rules => [
+        AppLocalizations.of(this.context).role,
+        AppLocalizations.of(this.context).roleDescription,
+      ];
   var size = 5;
   var cells = [];
   var totalCellsRevealed = 0;
@@ -365,7 +365,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text("Minesweeper"),
+        title: Text(AppLocalizations.of(context).appTitle),
         actions: [
           IconButton(
             icon: Icon(Icons.fiber_new),
