@@ -23,3 +23,9 @@ https://www.raywenderlich.com/26763909-creating-a-game-like-minesweeper-in-flutt
 
 https://user-images.githubusercontent.com/5406001/142733307-b7dd3d7f-819e-4666-af91-bf5277b45f51.mp4
 
+# app icon 更新
+`assets/icon/icon.png` を更新して、下記を実行s
+
+```sh
+$ flutter packages pub run flutter_launcher_icons:main
+```
