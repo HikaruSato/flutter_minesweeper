@@ -39,6 +39,7 @@ DEALINGS IN THE SOFTWARE.
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_minesweeper/cell.dart';
 import 'package:flutter_minesweeper/cell_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,7 +52,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Minesweeper Flutter',
+      title: 'Minesweeper',
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('jp', ''),
+        const Locale('en', ''),
+      ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
