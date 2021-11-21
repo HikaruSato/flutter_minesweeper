@@ -47,6 +47,32 @@ class _MyHomePageState extends State<MyHomePage> {
   var totalCellsRevealed = 0;
   var totalMines = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    generateGrid();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
+        title: Text(AppLocalizations.of(context).appTitle),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.fiber_new),
+            onPressed: () => restart(),
+          ),
+        ],
+      ),
+      body: Container(
+        margin: const EdgeInsets.all(1.0),
+        child: buildButtonColumn(),
+      ),
+    );
+  }
+
   void generateGrid() {
     cells = [];
     totalCellsRevealed = 0;
@@ -310,31 +336,5 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       return;
     }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    generateGrid();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        title: Text(AppLocalizations.of(context).appTitle),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.fiber_new),
-            onPressed: () => restart(),
-          ),
-        ],
-      ),
-      body: Container(
-        margin: const EdgeInsets.all(1.0),
-        child: buildButtonColumn(),
-      ),
-    );
   }
 }
